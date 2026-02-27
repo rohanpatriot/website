@@ -1,26 +1,412 @@
 @import "tailwindcss";
 
+/* ================================================================
+   @huntsyea — Swiss/Modernist Design System
+   ================================================================
+   Grid: 8px base unit
+   Type: Modular 1.333 (perfect fourth)
+   Palette: Pure monochrome — no color, no gradients, no shadows
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   DESIGN TOKENS
+   ---------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Palette — monochrome only */
+  --black: #000000;
+  --white: #ffffff;
+  --gray-100: #f5f5f5;
+  --gray-200: #e5e5e5;
+  --gray-300: #d4d4d4;
+  --gray-400: #a3a3a3;
+  --gray-500: #737373;
+  --gray-600: #525252;
+  --gray-700: #404040;
+  --gray-800: #262626;
+  --gray-900: #171717;
+
+  /* Semantic */
+  --fg: var(--black);
+  --fg-muted: var(--gray-500);
+  --fg-subtle: var(--gray-400);
+  --bg: var(--white);
+  --bg-hover: var(--gray-100);
+  --border: var(--gray-200);
+  --border-strong: var(--black);
+
+  /* Spacing — 8px base */
+  --space-1: 0.5rem;   /* 8px */
+  --space-2: 1rem;     /* 16px */
+  --space-3: 1.5rem;   /* 24px */
+  --space-4: 2rem;     /* 32px */
+  --space-5: 2.5rem;   /* 40px */
+  --space-6: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+  --space-10: 5rem;    /* 80px */
+  --space-12: 6rem;    /* 96px */
+  --space-15: 7.5rem;  /* 120px */
+
+  /* Layout */
+  --max-w-content: 1200px;
+  --max-w-prose: 38rem;  /* ~608px ≈ 65-70 chars */
+
+  /* Typography — fluid clamp scale */
+  --text-display: clamp(3rem, 2rem + 4.5vw, 5.5rem);
+  --text-h1: clamp(2.25rem, 1.5rem + 3.5vw, 3.75rem);
+  --text-h2: clamp(1.5rem, 1.125rem + 1.5vw, 2.25rem);
+  --text-h3: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+  --text-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --text-small: 0.875rem;
+  --text-overline: 0.6875rem;
+
+  /* Tracking */
+  --tracking-display: -0.035em;
+  --tracking-h1: -0.025em;
+  --tracking-h2: -0.02em;
+  --tracking-tight: -0.015em;
+  --tracking-overline: 0.12em;
+
+  /* Leading */
+  --leading-display: 1.05;
+  --leading-heading: 1.15;
+  --leading-body: 1.65;
+
+  /* Transitions */
+  --ease-swiss: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --duration-fast: 200ms;
+  --duration-base: 350ms;
+  --duration-slow: 600ms;
 }
 
+/* ----------------------------------------------------------------
+   TAILWIND v4 THEME
+   ---------------------------------------------------------------- */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-muted: var(--fg-muted);
+  --color-subtle: var(--fg-subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-hover: var(--bg-hover);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ----------------------------------------------------------------
+   BASE RESETS & DEFAULTS
+   ---------------------------------------------------------------- */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-inter), "Inter", system-ui, sans-serif;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--fg);
+    background-color: var(--bg);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    background: var(--black);
+    color: var(--white);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ----------------------------------------------------------------
+   TYPOGRAPHY — SWISS PRECISION
+   ---------------------------------------------------------------- */
+@layer components {
+  .text-display {
+    font-size: var(--text-display);
+    font-weight: 700;
+    letter-spacing: var(--tracking-display);
+    line-height: var(--leading-display);
+  }
+
+  .text-h1 {
+    font-size: var(--text-h1);
+    font-weight: 600;
+    letter-spacing: var(--tracking-h1);
+    line-height: var(--leading-heading);
+  }
+
+  .text-h2 {
+    font-size: var(--text-h2);
+    font-weight: 600;
+    letter-spacing: var(--tracking-h2);
+    line-height: var(--leading-heading);
+  }
+
+  .text-h3 {
+    font-size: var(--text-h3);
+    font-weight: 500;
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-heading);
+  }
+
+  .text-overline {
+    font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+    font-size: var(--text-overline);
+    font-weight: 500;
+    letter-spacing: var(--tracking-overline);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  .text-mono {
+    font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+    font-feature-settings: "liga" 0;
+  }
+
+  /* ----------------------------------------------------------------
+     PROSE — OPTIMAL READING MEASURE
+     ---------------------------------------------------------------- */
+  .prose-swiss {
+    max-width: var(--max-w-prose);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+
+  .prose-swiss p {
+    margin-bottom: 1.5em;
+  }
+
+  .prose-swiss p:last-child {
+    margin-bottom: 0;
+  }
+
+  .prose-swiss h1 {
+    font-size: var(--text-h1);
+    font-weight: 600;
+    letter-spacing: var(--tracking-h1);
+    line-height: var(--leading-heading);
+    margin-top: 2.5em;
+    margin-bottom: 0.75em;
+  }
+
+  .prose-swiss h2 {
+    font-size: var(--text-h2);
+    font-weight: 600;
+    letter-spacing: var(--tracking-h2);
+    line-height: var(--leading-heading);
+    margin-top: 2em;
+    margin-bottom: 0.625em;
+  }
+
+  .prose-swiss h3 {
+    font-size: var(--text-h3);
+    font-weight: 500;
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-heading);
+    margin-top: 1.75em;
+    margin-bottom: 0.5em;
+  }
+
+  .prose-swiss blockquote {
+    border-left: 2px solid var(--black);
+    padding-left: var(--space-3);
+    margin: 2em 0;
+    font-style: normal;
+    color: var(--fg-muted);
+  }
+
+  .prose-swiss code {
+    font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+    font-size: 0.875em;
+    background: var(--gray-100);
+    padding: 0.125em 0.375em;
+    border-radius: 2px;
+  }
+
+  .prose-swiss pre {
+    background: var(--gray-900);
+    color: var(--gray-100);
+    padding: var(--space-3);
+    overflow-x: auto;
+    margin: 2em 0;
+    border-radius: 0;
+  }
+
+  .prose-swiss pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: inherit;
+  }
+
+  .prose-swiss hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 3em 0;
+  }
+
+  .prose-swiss ul,
+  .prose-swiss ol {
+    padding-left: 1.25em;
+    margin-bottom: 1.5em;
+  }
+
+  .prose-swiss li {
+    margin-bottom: 0.375em;
+  }
+
+  .prose-swiss strong {
+    font-weight: 600;
+  }
+
+  .prose-swiss a {
+    color: var(--fg);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-thickness var(--duration-fast) var(--ease-swiss);
+  }
+
+  .prose-swiss a:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  /* ----------------------------------------------------------------
+     MICRO-INTERACTIONS
+     ---------------------------------------------------------------- */
+
+  /* Nav links — underline grows from left */
+  .nav-link {
+    position: relative;
+    text-decoration: none;
+    color: var(--fg);
+    padding-bottom: 2px;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--fg);
+    transition: width var(--duration-base) var(--ease-swiss);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link--active::after {
+    width: 100%;
+  }
+
+  /* Card rows — lift + arrow slide */
+  .card-row {
+    transition: transform var(--duration-fast) var(--ease-swiss);
+  }
+
+  .card-row:hover {
+    transform: translateY(-2px);
+  }
+
+  .card-row .arrow {
+    display: inline-block;
+    transition: transform var(--duration-base) var(--ease-swiss);
+  }
+
+  .card-row:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* Link arrows — arrow slide only, no lift */
+  .link-arrow {
+    transition: none;
+  }
+
+  .link-arrow .arrow {
+    display: inline-block;
+    transition: transform var(--duration-base) var(--ease-swiss);
+  }
+
+  .link-arrow:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* Text links — underline thickens */
+  .link-underline {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-thickness var(--duration-fast) var(--ease-swiss);
+  }
+
+  .link-underline:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  /* Tags — invert on hover */
+  .tag {
+    display: inline-block;
+    font-size: var(--text-overline);
+    font-weight: 500;
+    letter-spacing: var(--tracking-overline);
+    text-transform: uppercase;
+    padding: 0.25em 0.625em;
+    border: 1px solid var(--fg);
+    color: var(--fg);
+    background: transparent;
+    transition:
+      color var(--duration-fast) var(--ease-swiss),
+      background-color var(--duration-fast) var(--ease-swiss);
+  }
+
+  .tag:hover {
+    background: var(--fg);
+    color: var(--bg);
+  }
+
+  /* ----------------------------------------------------------------
+     DIVIDERS — ARCHITECTURAL, NOT DECORATIVE
+     ---------------------------------------------------------------- */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  .divider--strong {
+    border-top-color: var(--black);
+  }
+
+  /* ----------------------------------------------------------------
+     SCROLLBAR — MINIMAL
+     ---------------------------------------------------------------- */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--gray-300);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-500);
+  }
 }
