@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { revealVariants } from "@/lib/animations";
 
 interface ScrollRevealProps {
@@ -14,12 +15,15 @@ export function ScrollReveal({
   className = "",
   width = "full",
 }: ScrollRevealProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-64px" });
+
   return (
     <motion.div
+      ref={ref}
       variants={revealVariants}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-64px" }}
+      animate={isInView ? "visible" : "hidden"}
       className={`${width === "full" ? "w-full" : "w-fit"} ${className}`}
     >
       {children}

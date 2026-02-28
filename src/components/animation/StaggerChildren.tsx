@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 interface StaggerChildrenProps {
@@ -12,12 +13,15 @@ export function StaggerChildren({
   children,
   className = "",
 }: StaggerChildrenProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-64px" });
+
   return (
     <motion.div
+      ref={ref}
       variants={staggerContainer}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-64px" }}
+      animate={isInView ? "visible" : "hidden"}
       className={className}
     >
       {children}
