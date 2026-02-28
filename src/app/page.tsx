@@ -99,6 +99,7 @@ export default function HomePage() {
                 description={essay.description}
                 index={String(i + 1).padStart(2, "0")}
                 meta={essay.meta}
+                className={i === 0 ? "!border-t-0" : ""}
               />
             </StaggerItem>
           ))}
@@ -128,7 +129,7 @@ export default function HomePage() {
                 href={tool.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card-row block no-underline border-t border-[var(--border)] py-[var(--space-4)]"
+                className="card-row block no-underline border-t border-[var(--border)] first:border-t-0 py-[var(--space-4)]"
               >
                 <div className="flex items-start justify-between">
                   <Label as="p" className="mb-[var(--space-2)]">

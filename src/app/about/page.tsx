@@ -30,7 +30,7 @@ export default function AboutPage() {
       <section className="py-[var(--space-2)]">
         <StaggerChildren>
           <StaggerItem>
-            <GridRow label="Bio">
+            <GridRow label="Bio" className="!border-t-0">
               <div className="max-w-[48ch] space-y-[1.25em] text-[var(--fg-muted)] leading-[var(--leading-body)]">
                 <p>
                   I&apos;m a product and business leader focused on building

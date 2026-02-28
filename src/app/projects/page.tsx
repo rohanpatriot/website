@@ -71,9 +71,9 @@ export default function ProjectsPage() {
 
       <section className="py-[var(--space-2)]">
         <StaggerChildren>
-          {projects.map((project) => (
+          {projects.map((project, i) => (
             <StaggerItem key={project.period}>
-              <GridRow label={project.period}>
+              <GridRow label={project.period} className={i === 0 ? "!border-t-0" : ""}>
                 <h3 className="text-h3">{project.title}</h3>
                 <p className="mt-[2px] text-[var(--text-small)] text-[var(--fg-muted)]">
                   {project.company}
