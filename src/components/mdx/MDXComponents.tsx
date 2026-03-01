@@ -38,7 +38,7 @@ export const mdxComponents: MDXComponents = {
     />
   ),
   hr: () => (
-    <hr className="border-none border-t border-[var(--border)] my-[3em]" />
+    <hr className="border-0 border-t border-[var(--border)] my-[3em]" />
   ),
   ul: (props) => (
     <ul className="pl-[1.25em] mb-[1.5em] list-disc" {...props} />

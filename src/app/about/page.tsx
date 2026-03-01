@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/layout";
 import { Heading, Label } from "@/components/typography";
 import { GridRow, Divider } from "@/components/ui";
-import { ScrollReveal } from "@/components/animation/ScrollReveal";
+import { MountReveal } from "@/components/animation/MountReveal";
 import {
   StaggerChildren,
   StaggerItem,
@@ -17,12 +17,12 @@ export default function AboutPage() {
   return (
     <Container>
       <section className="pt-[var(--space-15)] pb-[var(--space-10)]">
-        <ScrollReveal>
+        <MountReveal>
           <Label as="p" className="mb-[var(--space-3)]">
             Info
           </Label>
           <Heading level="h1">About</Heading>
-        </ScrollReveal>
+        </MountReveal>
       </section>
 
       <Divider strong />

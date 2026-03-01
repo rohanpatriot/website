@@ -13,7 +13,7 @@ export function Footer() {
           <div className="flex gap-[var(--space-4)]">
             <Link
               href="https://twitter.com/huntsyea"
-              className="nav-link text-mono text-[var(--text-overline)] text-[var(--fg-muted)]"
+              className="nav-link nav-link--muted text-mono text-[var(--text-overline)]"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -21,7 +21,7 @@ export function Footer() {
             </Link>
             <Link
               href="https://linkedin.com/in/huntsyea"
-              className="nav-link text-mono text-[var(--text-overline)] text-[var(--fg-muted)]"
+              className="nav-link nav-link--muted text-mono text-[var(--text-overline)]"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -29,7 +29,7 @@ export function Footer() {
             </Link>
             <Link
               href="https://github.com/huntsyea"
-              className="nav-link text-mono text-[var(--text-overline)] text-[var(--fg-muted)]"
+              className="nav-link nav-link--muted text-mono text-[var(--text-overline)]"
               target="_blank"
               rel="noopener noreferrer"
             >

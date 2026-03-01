@@ -299,18 +299,20 @@
     position: absolute;
     bottom: -1px;
     left: 0;
-    width: 0;
+    width: 100%;
     height: 1px;
     background: var(--fg);
-    transition: width var(--duration-base) var(--ease-swiss);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform var(--duration-base) var(--ease-swiss);
   }
 
   .nav-link:hover::after {
-    width: 100%;
+    transform: scaleX(1);
   }
 
   .nav-link--active::after {
-    width: 100%;
+    transform: scaleX(1);
   }
 
   /* Card rows — lift + arrow slide */
@@ -357,7 +359,7 @@
     text-decoration-thickness: 2px;
   }
 
-  /* Tags — invert on hover */
+  /* Tags — invert only when inside interactive parents */
   .tag {
     display: inline-block;
     font-size: var(--text-overline);
@@ -373,7 +375,8 @@
       background-color var(--duration-fast) var(--ease-swiss);
   }
 
-  .tag:hover {
+  a:hover .tag,
+  button:hover .tag {
     background: var(--fg);
     color: var(--bg);
   }
@@ -408,5 +411,66 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: var(--gray-500);
+  }
+
+  /* ----------------------------------------------------------------
+     LOADING — DESIGN-SYSTEM BLINK
+     ---------------------------------------------------------------- */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .animate-blink {
+    animation: blink var(--duration-slow) var(--ease-swiss) infinite;
+  }
+
+  /* ----------------------------------------------------------------
+     ESSAY NAV — UNDERLINE REVEAL
+     ---------------------------------------------------------------- */
+  .nav-essay-link {
+    position: relative;
+  }
+
+  .nav-essay-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--fg);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform var(--duration-base) var(--ease-swiss);
+  }
+
+  .nav-essay-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* ----------------------------------------------------------------
+     FOOTER LINKS — MUTED TO FG
+     ---------------------------------------------------------------- */
+  .nav-link--muted {
+    color: var(--fg-muted);
+    transition: color var(--duration-base) var(--ease-swiss);
+  }
+
+  .nav-link--muted:hover {
+    color: var(--fg);
+  }
+}
+
+/* ----------------------------------------------------------------
+   REDUCED MOTION — ACCESSIBILITY
+   ---------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

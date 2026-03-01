@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/layout";
 import { Heading, Label, Mono } from "@/components/typography";
 import { Divider } from "@/components/ui";
-import { ScrollReveal } from "@/components/animation/ScrollReveal";
+import { MountReveal } from "@/components/animation/MountReveal";
 import {
   getEssayBySlug,
   getEssaySlugs,
@@ -50,7 +50,7 @@ export default async function EssayPage({ params }: PageProps) {
     <Container>
       {/* ── Header ─────────────────────────────────── */}
       <header className="pt-[var(--space-15)] pb-[var(--space-10)]">
-        <ScrollReveal>
+        <MountReveal>
           <Mono className="text-[var(--text-overline)] text-[var(--fg-muted)]">
             {formatDate(meta.date)} · {meta.readingTime}
           </Mono>
@@ -62,7 +62,7 @@ export default async function EssayPage({ params }: PageProps) {
           <p className="mt-[var(--space-3)] max-w-[52ch] text-[var(--fg-muted)]">
             {meta.description}
           </p>
-        </ScrollReveal>
+        </MountReveal>
       </header>
 
       <Divider strong />
@@ -79,7 +79,7 @@ export default async function EssayPage({ params }: PageProps) {
         {prev ? (
           <Link
             href={`/essays/${prev.slug}`}
-            className="card-row group block py-[var(--space-3)] no-underline"
+            className="card-row nav-essay-link group block py-[var(--space-3)] no-underline"
           >
             <Label as="span" className="mb-[var(--space-1)] block">
               Previous
@@ -92,7 +92,7 @@ export default async function EssayPage({ params }: PageProps) {
         {next ? (
           <Link
             href={`/essays/${next.slug}`}
-            className="card-row group block py-[var(--space-3)] no-underline md:text-right"
+            className="card-row nav-essay-link group block py-[var(--space-3)] no-underline md:text-right"
           >
             <Label as="span" className="mb-[var(--space-1)] block">
               Next

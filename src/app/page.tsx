@@ -7,6 +7,7 @@ import {
   StaggerItem,
 } from "@/components/animation/StaggerChildren";
 import { TextReveal } from "@/components/animation/TextReveal";
+import { tools as allTools } from "@/data/tools";
 
 const selectedEssays = [
   {
@@ -32,35 +33,7 @@ const selectedEssays = [
   },
 ];
 
-const tools = [
-  {
-    category: "Product",
-    title: "Outcome Mapper",
-    description:
-      "A lightweight framework for connecting business outcomes to product metrics and team actions.",
-    tags: ["Strategy", "Metrics"],
-    href: "https://outcomemapper.io",
-    external: true,
-  },
-  {
-    category: "Growth",
-    title: "Loop Builder",
-    description:
-      "Visual tool for mapping growth loops and identifying compounding feedback mechanisms.",
-    tags: ["Growth", "Systems"],
-    href: "https://loopbuilder.dev",
-    external: true,
-  },
-  {
-    category: "Leadership",
-    title: "1:1 Toolkit",
-    description:
-      "Structured templates and question banks for running high-signal one-on-one meetings.",
-    tags: ["Management", "People"],
-    href: "https://oneononetoolkit.com",
-    external: true,
-  },
-];
+const tools = allTools.slice(0, 3);
 
 export default function HomePage() {
   return (
@@ -135,7 +108,7 @@ export default function HomePage() {
                   <Label as="p" className="mb-[var(--space-2)]">
                     {tool.category}
                   </Label>
-                  <span className="card-row-arrow text-[var(--fg-muted)]">→</span>
+                  <span className="arrow text-[var(--fg-muted)]">→</span>
                 </div>
                 <h3 className="text-h3">{tool.title}</h3>
                 <p className="mt-[var(--space-1)] text-[var(--text-small)] text-[var(--fg-muted)] leading-[1.5]">

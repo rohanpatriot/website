@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout";
 import { Heading, Label, Mono } from "@/components/typography";
-import { Card } from "@/components/ui";
+import { Card, Divider } from "@/components/ui";
 import {
   StaggerChildren,
   StaggerItem,
 } from "@/components/animation/StaggerChildren";
 import { ScrollReveal } from "@/components/animation/ScrollReveal";
+import { MountReveal } from "@/components/animation/MountReveal";
 import { getEssaysByYear } from "@/lib/essays";
 
 export const metadata: Metadata = {
@@ -28,7 +29,7 @@ export default function EssaysPage() {
   return (
     <Container>
       <section className="pt-[var(--space-15)] pb-[var(--space-10)]">
-        <ScrollReveal>
+        <MountReveal>
           <Label as="p" className="mb-[var(--space-3)]">
             Writing
           </Label>
@@ -37,13 +38,15 @@ export default function EssaysPage() {
             On product leadership, growing teams, and building things that
             matter.
           </p>
-        </ScrollReveal>
+        </MountReveal>
       </section>
 
+      <Divider strong />
+
       {years.map((year) => (
-        <section key={year} className="pb-[var(--space-10)]">
+        <section key={year} className="py-[var(--space-5)]">
           <ScrollReveal>
-            <Mono className="mb-[var(--space-4)] block text-[var(--text-small)] text-[var(--fg-subtle)]">
+            <Mono className="mb-[var(--space-2)] block text-[var(--text-small)] text-[var(--fg-subtle)]">
               {year}
             </Mono>
           </ScrollReveal>

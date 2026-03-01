@@ -6,20 +6,45 @@
       "sourceType": "github",
       "computedHash": "2f771f8eb25f9856d2169a4de4766de94e2bdbff999f42c458c8f1e2ca405c03"
     },
+    "algorithmic-art": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "5c2804e8f0d4944c7ce6939a2e4afdcf0cb69c966a505481ed8b96e20bb32eee"
+    },
     "audit-website": {
       "source": "squirrelscan/skills",
       "sourceType": "github",
       "computedHash": "2c060290f90340e8bb6009502ec936b8ebb3ff889332a43e24bf210528ebba9f"
+    },
+    "d3k": {
+      "source": "vercel-labs/dev3000",
+      "sourceType": "github",
+      "computedHash": "dbd6194a606953453022059fbbcb743f621bc7fed639b7525fa19789e75364d2"
     },
     "dogfood": {
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
       "computedHash": "17a3fc2c1a49df9debce572c7b47521caa96f793597d944c4e648b3aa90738cf"
     },
+    "framer-motion-animator": {
+      "source": "patricio0312rev/skills",
+      "sourceType": "github",
+      "computedHash": "d0137ba04049bf8926bc80f6a5e2b82d94b5633b6445a85dbfb26ab4f1b104c6"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "063a0e6448123cd359ad0044cc46b0e490cc7964d45ef4bb9fd842bd2ffbca67"
+    },
     "next-best-practices": {
       "source": "vercel-labs/next-skills",
       "sourceType": "github",
       "computedHash": "515ba75178bd44875812d9a560bdf14651f86709f89cf1d4f209638e879807f3"
+    },
+    "remotion-best-practices": {
+      "source": "remotion-dev/skills",
+      "sourceType": "github",
+      "computedHash": "9851afb52e1b892c43b2af973bda1776ce01fedfdfe704e0cfd70069a3a9c300"
     },
     "vercel-composition-patterns": {
       "source": "vercel-labs/agent-skills",

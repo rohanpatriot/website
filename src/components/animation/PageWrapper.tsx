@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, MotionConfig } from "framer-motion";
 import { pageVariants } from "@/lib/animations";
 
 interface PageWrapperProps {
@@ -9,13 +9,14 @@ interface PageWrapperProps {
 
 export function PageWrapper({ children }: PageWrapperProps) {
   return (
-    <motion.div
-      variants={pageVariants}
-      initial="initial"
-      animate="enter"
-      exit="exit"
-    >
-      {children}
-    </motion.div>
+    <MotionConfig reducedMotion="user">
+      <motion.div
+        variants={pageVariants}
+        initial="initial"
+        animate="enter"
+      >
+        {children}
+      </motion.div>
+    </MotionConfig>
   );
 }
